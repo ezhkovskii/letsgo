@@ -1,3 +1,15 @@
+
+:root {
+    --header_height: 55px;
+}
+
 .header {
-    outline: 1px solid red;
+    height: var(--header_height);
+    background-color: #3B4256;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    line-height: var(--header_height);
 }
