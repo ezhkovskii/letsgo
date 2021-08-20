@@ -1,8 +1,19 @@
 import styles from "./Header.module.css"
+import {Link} from "react-router-dom";
 
-function Header() {
+const Header = () => {
     return (
-        <div className={styles.header}>123</div>    
+        <ul>
+            <li>
+                <Link to="/">Пресс-туры</Link>
+            </li>
+            <li>
+                <Link to="/feedback">Обратная связь</Link>
+            </li>
+            <li>
+                <Link to="/monitoring">Мониторинг</Link>
+            </li>
+        </ul>  
     );
 }
   
