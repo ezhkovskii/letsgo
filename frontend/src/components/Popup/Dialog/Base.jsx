@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Button, Modal, ButtonGroup, Form } from 'react-bootstrap';
 
-const PressToursList = ({data, children, content}) => {
+const PressToursList = ({data, children, content, show1}) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -14,7 +14,7 @@ const PressToursList = ({data, children, content}) => {
         </Button>
   
         <Modal
-          show={show}
+          show={show1}
           onHide={handleClose}
           backdrop="static"
           keyboard={false}
