@@ -17,17 +17,13 @@ const Header = () => {
             <Container>
                 <Nav activeKey="/home">
                     <div className="d-flex">
+                    <Nav.Link href="/">Пресс-туры</Nav.Link>
+                    <Nav.Link href="/search">Поиск</Nav.Link>
                         <Nav.Item>
-                            <Nav.Link to="/">Пресс-туры</Nav.Link>
+                            <Nav.Link href="/bloggers">Обратная связь</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link to="/search">Поиск</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link to="/bloggers">Обратная связь</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link to="/monitoring">Мониторинг</Nav.Link>
+                            <Nav.Link href="/monitoring">Мониторинг</Nav.Link>
                         </Nav.Item>
                     </div>
                     <div className={styles.rightBlock}>
