@@ -7,7 +7,7 @@ import {
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BloggersList from './pages/BloggersList';
-import Feedback from './pages/Feedback';
+import Search from './pages/Search';
 import Monitoring from './pages/Monitoring';
 import PressTours from './pages/PressTours';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,14 +16,15 @@ import './App.css';
 export default function App() {
   return (
     <Router>
-      <div>
+      <div className="main">
        <Header />
-        <Switch>
+       <div className="main__block">
+       <Switch>
           <Route exact path="/">
             <PressTours />
           </Route>
-          <Route path="/feedback">
-            <Feedback />
+          <Route path="/search">
+            <Search />
           </Route>
           <Route path="/monitoring">
             <Monitoring />
@@ -32,7 +33,8 @@ export default function App() {
             <BloggersList />
           </Route>
         </Switch>
-        <Footer />
+       </div>
+      <Footer />
       </div>
     </Router>
   );
