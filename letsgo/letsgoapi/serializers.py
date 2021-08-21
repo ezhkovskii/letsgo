@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from letsgoapi.models import AccountInsta
+from letsgoapi.models import AccountInsta, PressTour
 
 
 class AccountInstaSerializer(serializers.Serializer):
@@ -11,5 +11,8 @@ class AccountInstaSerializer(serializers.Serializer):
     def create(self, validated_data):
         return AccountInsta.objects.create(**validated_data)
 
-class PressTourSerializer(serializers.Serializer):
-    pass
+class PressTourSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = PressTour
+        fields = '__all__'

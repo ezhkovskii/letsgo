@@ -6,6 +6,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import generics
+
 
 import requests
 
@@ -50,14 +52,15 @@ def auth_inst(request):
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
-from rest_framework import generics
 
-
-class PressTourList(generics.ListCreateAPIView):
+class PressTourList(generics.ListAPIView):
     queryset = PressTour.objects.all()
     serializer_class = PressTourSerializer
-
+    
+#написать метод POST для списков
 
 class PressTourDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = PressTour.objects.all()
     serializer_class = PressTourSerializer
+
+    

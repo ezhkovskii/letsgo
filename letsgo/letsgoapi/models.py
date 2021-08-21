@@ -31,13 +31,13 @@ class PressTour(models.Model):
     ]
 
     title = models.CharField(max_length=255)
-    status = models.IntegerField(choices=STATUS, default=START)
-    number_bloggers = models.IntegerField()
-    created = models.DateField()
-    current = models.BooleanField(default=False)
+    status = models.IntegerField(choices=STATUS, default=START, null=True)
+    number_bloggers = models.IntegerField(null=True)
+    created = models.DateField(auto_now_add=True, null=True)
+    current = models.BooleanField(default=False, null=True)
 
     # параметры поиска блогеров
-    key_words = ArrayField(models.CharField(max_length=255), null=True)
+    key_words = models.TextField(null=True)
     sex = models.IntegerField(choices=SEX, default=FEMALE, null=True)
     involvement = models.FloatField(verbose_name='Вовлеченность', null=True)
     number_publications = models.IntegerField(verbose_name='Количество публикаций', null=True)
