@@ -47,9 +47,9 @@ class PressTour(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self):
+    def save(self, *args, **kwargs):
         PressTour.objects.filter(current=True).update(current=False)
-        return super().save()
+        return super().save(*args, **kwargs)
 
 
 class Blogger(models.Model):
