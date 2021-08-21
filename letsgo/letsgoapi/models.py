@@ -36,13 +36,6 @@ class PressTour(models.Model):
     created = models.DateField(auto_now_add=True, null=True)
     current = models.BooleanField(default=False)
 
-    # параметры поиска блогеров
-    key_words = models.TextField(null=True)
-    sex = models.IntegerField(choices=SEX, default=FEMALE, null=True)
-    involvement = models.FloatField(verbose_name='Вовлеченность', null=True)
-    number_publications = models.IntegerField(verbose_name='Количество публикаций', null=True)
-    number_subscribers = models.IntegerField(verbose_name='Количество подписчиков', null=True)
-    number_subscriptions = models.IntegerField(verbose_name='Количество подписок', null=True)
 
     def __str__(self):
         return self.title
