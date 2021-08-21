@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import PressToursList from '../components/List/PressToursList';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import CreatePost from '../components/Popup/Dialog/CreatePost'
 
 const PressTours = () => {
     let [posts, setPosts] = useState([]);
-
-    useEffect(async () => {
-        const resultPosts = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    const update = async () => {
+        const resultPosts = await axios.get('https://e66a-193-233-144-81.ngrok.io/api/v1/press-tours/?format=json');
         setPosts(resultPosts.data);
-    }, []);
-
+    };
+    useEffect(update, []);
+    const [modalShow, setModalShow] = useState(false);
     return (
         <div className="rounded">
-            <PressToursList data={posts}/>
+            <div className="pb-3 justify-content-end d-flex">
+                <Button variant="secondary" onClick={() => {setModalShow(true)}}>Создать</Button>
+            </div>
+            <PressToursList data={posts} onDelete={() => update()}/>
+            <CreatePost
+                show={modalShow}
+                onHide={(e) => {setModalShow(false); update()}}
+            />
         </div>
     );
 }
