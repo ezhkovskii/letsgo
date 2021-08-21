@@ -7,8 +7,8 @@ const PressTours = () => {
 
     useEffect(async () => {
         const resultPosts = await axios.get('https://jsonplaceholder.typicode.com/posts');
-        setPosts(resultPosts);
-    });
+        setPosts(resultPosts.data);
+    }, []);
 
     return (
         <div>

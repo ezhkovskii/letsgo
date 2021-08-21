@@ -1,18 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 
 const List = ({data}) => {
     // const [data, setData] = useState([{title: 'saassa'}, {title: 'sasasasasas'}]);
 
-    useEffect(()=>{
-        console.log(data);
-    })
+    // useEffect(()=>{
+    //     console.log(data);
+    // })
 
     return (
-        <div>
+            <ListGroup>
+                {data.map(item=>
+                    <ListGroup.Item action key={item.id}>{item.title}</ListGroup.Item>
+                )}
+            </ListGroup>
             
-        </div>
     );
 }
 
