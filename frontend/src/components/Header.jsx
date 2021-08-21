@@ -7,6 +7,12 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom';
 
+/**
+ * Компонент шапки.
+ * @param {object} props Параметры компонента.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Header = (props) => {
     const dropDownTitle = (
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-gear-fill" viewBox="0 0 16 16">
@@ -37,6 +43,11 @@ const Header = (props) => {
                                 <Nav.Link as={Link} to="/search">Поиск</Nav.Link>
                                 <Nav.Link as={Link} to="/bloggers">Обратная связь</Nav.Link>
                                 <Nav.Link as={Link} to="/monitoring">Мониторинг</Nav.Link>
+                            </div>
+                            <div className="d-flex">
+                                <NavDropdown menuVariant="dark" title={dropDownTitle} id="basic-nav-dropdown">
+                                    <NavDropdown.Item onClick={(e) => {setModalShow(true)}}>Настройки инстаграма</NavDropdown.Item>
+                                </NavDropdown>
                             </div>
                         </div>
                     </Nav>
