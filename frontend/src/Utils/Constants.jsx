@@ -2,4 +2,4 @@
  * Константа сервера.
  * @type {string}
  */
-export const SERVER_HOST = 'http://127.0.0.1:7000/';
+export const SERVER_HOST = 'https://8ba3-193-233-144-81.ngrok.io/';
