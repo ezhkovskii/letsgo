@@ -34,8 +34,6 @@ const Header = (props) => {
                         <div className="d-flex flex-grow-1 flex-shrink-1">
                             <div className="d-flex">
                                 <Nav.Link as={Link} to="/">Пресс-туры</Nav.Link>
-                                <Nav.Link as={Link} to="/search">Поиск</Nav.Link>
-                                <Nav.Link as={Link} to="/bloggers">Обратная связь</Nav.Link>
                                 <Nav.Link as={Link} to="/monitoring">Мониторинг</Nav.Link>
                             </div>
                         </div>
