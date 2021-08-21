@@ -3,10 +3,10 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class AccountInsta(models.Model):
-    username = models.CharField(max_length=255)
+    username = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
-    session_id = models.CharField(max_length=255)
-    instagram_id = models.BigIntegerField()
+    session_id = models.CharField(max_length=255, null=True)
+    instagram_id = models.BigIntegerField(null=True)
 
     def __str__(self):
         return self.username
@@ -27,9 +27,14 @@ class PressTour(models.Model):
     status = models.IntegerField(choices=STATUS, default=START)
     number_bloggers = models.IntegerField()
     created = models.DateField()
+    current = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
+
+    def save(self):
+        # поиск текущего пресстура, current ставим у него false, т.к. текущий только один
+        return super().save()
 
 
 class ParamSearch(models.Model):
@@ -80,4 +85,4 @@ class MemberPressTour(models.Model):
     status = models.IntegerField(choices=STATUS, default=PENDING)
 
     def __str__(self):
-        return self.press_tour + ' ' + self.blogger
+        return self.press_tour.title + ' ' + self.blogger.username
