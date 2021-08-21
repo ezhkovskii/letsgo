@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BlogersList from '../components/List/BlogersList';
 import axios from 'axios';
+import { Tabs, Tab } from 'react-bootstrap';
 
 const Bloggers = () => {
     let [posts, setPosts] = useState([]);

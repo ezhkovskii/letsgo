@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, ButtonGroup, Form } from 'react-bootstrap';
 
 const PressToursList = ({data, children, content}) => {
     const [show, setShow] = useState(false);
@@ -20,17 +20,20 @@ const PressToursList = ({data, children, content}) => {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
+            <Modal.Title>Чат</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            I will not close if you click outside me. Don't even try to press
-            escape key.
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Сообщение</Form.Label>
+            <Form.Control as="textarea" rows={3} />
+          </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary">Understood</Button>
+          <ButtonGroup aria-label="Basic example">
+            <Button variant="danger" onClick={handleClose}>Отказался</Button>
+            <Button variant="success" onClick={handleClose}>Согласился</Button>
+           </ButtonGroup>
+            <Button variant="primary">Отправить сообщение</Button>
           </Modal.Footer>
         </Modal>
       </>
