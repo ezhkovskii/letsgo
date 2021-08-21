@@ -48,21 +48,10 @@ export default function App() {
                     <Header openPopupCallback={handleCallback} />
                     <div className="container mt-3">
                         <Switch>
-                            <Route exact path="/">
-                                <PressTours />
-                            </Route>
-                            <Route path="/search">
-                                <Search />
-                            </Route>
-                            <Route path="/bloggers">
-                                <Bloggers />
-                            </Route>
-                            <Route path="/monitoring">
-                                <Monitoring />
-                            </Route>
-                            <Route path="/bloggers">
-                                <Bloggers />
-                            </Route>
+                            <Route exact path="/" component={PressTours}/>
+                            <Route path="/search" component={Search}/>
+                            <Route path="/bloggers/:id" component={Bloggers}/>
+                            <Route path="/monitoring" component={Monitoring}/>
                         </Switch>
                     </div>
                 </div>

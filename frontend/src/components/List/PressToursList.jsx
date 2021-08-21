@@ -12,7 +12,7 @@ const PressToursList = ({data, content, onDelete}) => {
     return (
         <ListGroup>
             {data.map(item =>
-                <ListGroup.Item as={Link} action key={item.id} to='/bloggers'>
+                <ListGroup.Item as={Link} action key={item.id} to={'/bloggers/' + item.id}>
                     <div class="container">
                     <div class="row">
                             <div class="col">
