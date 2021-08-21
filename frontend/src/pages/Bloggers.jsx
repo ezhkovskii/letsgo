@@ -14,7 +14,7 @@ const Bloggers = (props) => {
             const tourData = await axios.get(`${SERVER_HOST}api/v1/press-tours/${tourId}/?format=json`);
             setCurTour(tourData.data);
         }
-        const resultPosts = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        const resultPosts = await axios.get(`${SERVER_HOST}api/v1/get-bloggers-from-instagram-by-params/?key_words=самара`);
         setPosts(resultPosts.data);
     }, []);
 
