@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import Header from './components/Header';
-import Footer from './components/Footer';
+import LoadingIndicator from './components/LoadingIndicator';
 import Bloggers from './pages/Bloggers';
 import Search from './pages/Search';
 import Monitoring from './pages/Monitoring';
@@ -16,9 +16,9 @@ import './App.css';
 export default function App() {
   return (
     <Router>
-      <div className="main">
+      <div className="main w-100 h-100">
        <Header />
-       <div className="main__block">
+       <div className="container mt-3">
        <Switch>
           <Route exact path="/">
             <PressTours />
@@ -37,7 +37,6 @@ export default function App() {
           </Route>
         </Switch>
        </div>
-      <Footer />
       </div>
     </Router>
   );
