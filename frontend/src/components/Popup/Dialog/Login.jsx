@@ -42,8 +42,10 @@ const PressToursList = (props) => {
             // Временно храним данные в localStorage
             localStorage.setItem('login', login);
             localStorage.setItem('password', login);
+            props.openPopupCallback({show: true, variant: 'success', title: 'Успешно!', message: 'Логин и пароль успешно сохранен!'});
+            props.onHide();
         } catch (e) {
-            props.openPopupCallback({show: true, variant: 'danger', title: 'Ошибка!', message: JSON.parse(e?.response?.data?.msg?.[0])?.detail});
+            props.openPopupCallback({show: true, variant: 'danger', title: 'Ошибка!', message: 'Произошла ошибка при выполнении метода. Попробуйте еще раз.'});
         }
         setShowLoadingButton(false);
     }
