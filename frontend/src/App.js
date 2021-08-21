@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import Header from './components/Header';
 import Bloggers from './pages/Bloggers';
-import Search from './pages/Search';
 import Monitoring from './pages/Monitoring';
 import PressTours from './pages/PressTours';
 import './App/bootstrap.min.css';
@@ -41,6 +41,7 @@ export default function App() {
     const handleCallback = (childData) =>{
         showPopup(childData);
     }
+
     return (
         <>
             <Router>
@@ -48,10 +49,10 @@ export default function App() {
                     <Header openPopupCallback={handleCallback} />
                     <div className="container mt-3">
                         <Switch>
-                            <Route exact path="/" component={PressTours}/>
-                            <Route path="/search" component={Search}/>
+                            <Route path="/" component={PressTours}/>
                             <Route path="/bloggers/:id" component={Bloggers}/>
                             <Route path="/monitoring" component={Monitoring}/>
+                            <Redirect to="/"/>
                         </Switch>
                     </div>
                 </div>

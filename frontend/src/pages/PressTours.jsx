@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PressToursList from '../components/List/PressToursList';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
-import CreatePost from '../components/Popup/Dialog/CreatePost'
+import CreatePost from '../components/Popup/Dialog/CreatePost';
 
 const PressTours = () => {
     let [posts, setPosts] = useState([]);

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { ListGroup, Button } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import Popup from '../Popup/Dialog/Base'
 
 const BloggersList = ({data, content}) => {

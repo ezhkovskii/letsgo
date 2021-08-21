@@ -6,8 +6,6 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom';
-import axios from "axios";
-import {SERVER_HOST} from "../Utils/Constants";
 
 const Header = (props) => {
     const dropDownTitle = (
@@ -17,24 +15,15 @@ const Header = (props) => {
     );
 
     const [modalShow, setModalShow] = useState(false);
-
-    let [tours, setTours] = useState([]);
+    // Временно храним данные в localStorage
+    const [forceShow] = useState(!localStorage.getItem('login') || !localStorage.getItem('password'));
 
     useEffect(async () => {
-        const resultPosts = await axios.get(`${SERVER_HOST}api/v1/press-tours/?format=json`);
-        setTours(resultPosts.data);
+        setModalShow(forceShow);
     }, []);
 
     const handleOpenCallback = (childData) => {
         props.openPopupCallback(childData);
-    }
-
-    const toursList = (tourses) => {
-        let result = '';
-        Object.keys(tourses).forEach((tour) => {
-            result += '<NavDropdown.Item>{tour}</NavDropdown.Item>'
-        });
-        return (result);
     }
 
     return (
@@ -48,16 +37,6 @@ const Header = (props) => {
                                 <Nav.Link as={Link} to="/search">Поиск</Nav.Link>
                                 <Nav.Link as={Link} to="/bloggers">Обратная связь</Nav.Link>
                                 <Nav.Link as={Link} to="/monitoring">Мониторинг</Nav.Link>
-                            </div>
-                            <div className="d-flex">
-                                <NavDropdown menuVariant="dark" title="Не выбрано" id="basic-nav-dropdown">
-                                    {tours.map(tour =>
-                                        <NavDropdown.Item>{tour.title}</NavDropdown.Item>
-                                    )}
-                                </NavDropdown>
-                                <NavDropdown menuVariant="dark" title={dropDownTitle} id="basic-nav-dropdown">
-                                    <NavDropdown.Item onClick={(e) => {setModalShow(true)}}>Настройки инстаграма</NavDropdown.Item>
-                                </NavDropdown>
                             </div>
                         </div>
                     </Nav>

@@ -25,7 +25,7 @@ const PressToursList = (props) => {
               keyboard={false}
             >
               <Modal.Header closeButton>
-                <Modal.Title>Создать пресс тур</Modal.Title>
+                <Modal.Title>Создать пресс-тур</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <div class="form-group">

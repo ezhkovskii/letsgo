@@ -39,9 +39,11 @@ const PressToursList = (props) => {
                 username: login,
                 password
             });
-            props.openPopupCallback({show: true, variant: 'success', title: 'Успешно!', message: 'Ок!'});
+            // Временно храним данные в localStorage
+            localStorage.setItem('login', login);
+            localStorage.setItem('password', login);
         } catch (e) {
-            props.openPopupCallback({show: true, variant: 'danger', title: 'Ошибка!', message: JSON.parse(e.response.data.msg[0]).detail});
+            props.openPopupCallback({show: true, variant: 'danger', title: 'Ошибка!', message: JSON.parse(e?.response?.data?.msg?.[0])?.detail});
         }
         setShowLoadingButton(false);
     }
@@ -52,6 +54,7 @@ const PressToursList = (props) => {
               {...props}
               backdrop="static"
               keyboard={false}
+              centered
             >
               <Modal.Header closeButton>
                 <Modal.Title>Данные Instagram аккаунта</Modal.Title>
