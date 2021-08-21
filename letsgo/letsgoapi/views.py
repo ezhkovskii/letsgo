@@ -1,11 +1,15 @@
 from django.shortcuts import render
+from letsgoapi.models import PressTour
 
-from letsgoapi.serializers import AccountInstaSerializer
+from letsgoapi.serializers import AccountInstaSerializer, PressTourSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 import requests
+
+from letsgoapi.utils import URL_INSTAGRAM_REST
 
 
 @api_view(['POST'])
@@ -13,7 +17,7 @@ def auth_inst(request):
     if request.method == 'POST':
         serializer = AccountInstaSerializer(data=request.data)
         if serializer.is_valid():
-            req = requests.post('http://127.0.0.1:8000/auth/login', data=serializer.validated_data)
+            req = requests.post(URL_INSTAGRAM_REST + 'auth/login', data=serializer.validated_data)
             if req.status_code == 200:
                 try:
                     serializer.validated_data['session_id'] = req.text
@@ -46,3 +50,14 @@ def auth_inst(request):
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
+from rest_framework import generics
+
+
+class PressTourList(generics.ListCreateAPIView):
+    queryset = PressTour.objects.all()
+    serializer_class = PressTourSerializer
+
+
+class PressTourDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PressTour.objects.all()
+    serializer_class = PressTourSerializer

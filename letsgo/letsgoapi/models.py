@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class AccountInsta(models.Model):
     username = models.CharField(max_length=255, unique=True)
-    password = models.CharField(max_length=255)
+    password = models.CharField(max_length=255) # надо зашифровать
     session_id = models.CharField(max_length=255, null=True)
     instagram_id = models.BigIntegerField(null=True)
 
@@ -23,11 +23,26 @@ class PressTour(models.Model):
         (END, 'Завершен'),
     ]
 
+    MALE = 1
+    FEMALE = 2
+    SEX = [
+        (MALE, 'Мужчина'),
+        (FEMALE, 'Женщина'),
+    ]
+
     title = models.CharField(max_length=255)
     status = models.IntegerField(choices=STATUS, default=START)
     number_bloggers = models.IntegerField()
     created = models.DateField()
     current = models.BooleanField(default=False)
+
+    # параметры поиска блогеров
+    key_words = ArrayField(models.CharField(max_length=255), null=True)
+    sex = models.IntegerField(choices=SEX, default=FEMALE, null=True)
+    involvement = models.FloatField(verbose_name='Вовлеченность', null=True)
+    number_publications = models.IntegerField(verbose_name='Количество публикаций', null=True)
+    number_subscribers = models.IntegerField(verbose_name='Количество подписчиков', null=True)
+    number_subscriptions = models.IntegerField(verbose_name='Количество подписок', null=True)
 
     def __str__(self):
         return self.title
@@ -37,37 +52,14 @@ class PressTour(models.Model):
         return super().save()
 
 
-class ParamSearch(models.Model):
-
-    MALE = 1
-    FEMALE = 2
-    SEX = [
-        (MALE, 'Мужчина'),
-        (FEMALE, 'Женщина'),
-    ]
-    
-    press_tour = models.OneToOneField(
-        PressTour,
-        on_delete=models.CASCADE
-    )
-    key_words = ArrayField(models.CharField(max_length=255), blank=True)
-    sex = models.IntegerField(choices=SEX, default=FEMALE)
-    involvement = models.FloatField(verbose_name='Вовлеченность')
-    number_publications = models.IntegerField(verbose_name='Количество публикаций')
-    number_subscribers = models.IntegerField(verbose_name='Количество подписчиков')
-    number_subscriptions = models.IntegerField(verbose_name='Количество подписок')
-
-
-    def __str__(self):
-        return 'Параметры поиска: ' + self.press_tour.title
-
-
 class Blogger(models.Model):
     username = models.CharField(max_length=255)
     full_name = models.CharField(max_length=255)
     instagram_id = models.BigIntegerField()
     press_tour = models.ManyToManyField(PressTour, through='MemberPressTour')
 
+    def __str__(self):
+        return self.username
 
 class MemberPressTour(models.Model):
 
