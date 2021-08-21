@@ -2,14 +2,15 @@ import React, {useEffect, useState} from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import {Form, Dropdown,DropdownButton} from 'react-bootstrap'
 import axios from "axios";
+import {SERVER_HOST} from "../../../Utils/Constants";
 
 const PressToursList = (props) => {
     const [title, setTitle] = useState();
     const [status, setStatus] = useState(1);
     const [number_bloggers, setNumberbloggers] = useState(1);
-
+ 
     const saveRequest = async () => {
-        await axios.post('https://e66a-193-233-144-81.ngrok.io/api/v1/press-tours/', {
+        await axios.post(`${SERVER_HOST}api/v1/press-tours/`, {
             title,
             status: Number(status),
             number_bloggers

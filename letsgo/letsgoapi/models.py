@@ -34,7 +34,7 @@ class PressTour(models.Model):
     status = models.IntegerField(choices=STATUS, default=START, null=True)
     number_bloggers = models.IntegerField(null=True)
     created = models.DateField(auto_now_add=True, null=True)
-    current = models.BooleanField(default=False, null=True)
+    current = models.BooleanField(default=False)
 
     # параметры поиска блогеров
     key_words = models.TextField(null=True)

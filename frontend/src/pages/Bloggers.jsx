@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BlogersList from '../components/List/BlogersList';
 import axios from 'axios';
 import { Tabs, Tab } from 'react-bootstrap';
+import {SERVER_HOST} from "../Utils/Constants";
 
 const Bloggers = (props) => {
     let [posts, setPosts] = useState([]);
@@ -10,7 +11,7 @@ const Bloggers = (props) => {
     useEffect(async () => {
         const tourId = props?.match?.params?.id;
         if (tourId) {
-            const tourData = await axios.get('https://e66a-193-233-144-81.ngrok.io/api/v1/press-tours/' + tourId + '/?format=json');
+            const tourData = await axios.get(`${SERVER_HOST}api/v1/press-tours/${tourId}/?format=json`);
             setCurTour(tourData.data);
         }
         const resultPosts = await axios.get('https://jsonplaceholder.typicode.com/posts');

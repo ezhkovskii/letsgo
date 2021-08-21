@@ -2,11 +2,12 @@ import React, {useEffect, useState} from 'react';
 import { ListGroup, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import {SERVER_HOST} from "../../Utils/Constants";
 
 const PressToursList = ({data, content, onDelete}) => {
     const [status] = useState(['Набор блогеров', 'Проведение', 'Завершен']);
     const deleteRequest = async (id) => {
-        await axios.delete('https://e66a-193-233-144-81.ngrok.io/api/v1/press-tours/' + id + '/');
+        await axios.delete(`${SERVER_HOST}api/v1/press-tours/${id}/`);
         onDelete();
     }
     return (
