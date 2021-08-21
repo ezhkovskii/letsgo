@@ -51,7 +51,9 @@ const Header = (props) => {
                             </div>
                             <div className="d-flex">
                                 <NavDropdown menuVariant="dark" title="Не выбрано" id="basic-nav-dropdown">
-                                    {(toursList(tours))}
+                                    {tours.map(tour =>
+                                        <NavDropdown.Item>{tour.title}</NavDropdown.Item>
+                                    )}
                                 </NavDropdown>
                                 <NavDropdown menuVariant="dark" title={dropDownTitle} id="basic-nav-dropdown">
                                     <NavDropdown.Item onClick={(e) => {setModalShow(true)}}>Настройки инстаграма</NavDropdown.Item>
