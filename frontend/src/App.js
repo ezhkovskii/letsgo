@@ -10,7 +10,7 @@ import Bloggers from './pages/Bloggers';
 import Search from './pages/Search';
 import Monitoring from './pages/Monitoring';
 import PressTours from './pages/PressTours';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './App/bootstrap.min.css';
 import './App.css';
 
 export default function App() {

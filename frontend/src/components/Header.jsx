@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from 'react';
 import styles from "./Header.module.css"
 import Login from './Popup/Dialog/Login';
 import NavDropdown from 'react-bootstrap/NavDropdown'
@@ -12,28 +13,36 @@ const Header = () => {
         </svg>
     );
 
+    const [modalShow, setModalShow] = useState(false);
+
     return (
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <Nav activeKey="/home">
-                    <div className="d-flex">
-                    <Nav.Link href="/">Пресс-туры</Nav.Link>
-                    <Nav.Link href="/search">Поиск</Nav.Link>
-                        <Nav.Item>
-                            <Nav.Link href="/bloggers">Обратная связь</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="/monitoring">Мониторинг</Nav.Link>
-                        </Nav.Item>
-                    </div>
-                    <div className={styles.rightBlock}>
-                        <NavDropdown menuVariant="dark" title={dropDownTitle} id="basic-nav-dropdown">
-                            <NavDropdown.Item onClick={()=>(<Login show={true} />)}>Настройки инстаграма</NavDropdown.Item>
-                        </NavDropdown>
-                    </div>
-                </Nav>
-            </Container>
-        </Navbar>
+        <>
+            <Navbar bg="primary" variant="dark">
+                <Container>
+                    <Nav activeKey="/home">
+                        <div className="d-flex">
+                            <Nav.Link href="/">Пресс-туры</Nav.Link>
+                            <Nav.Link href="/search">Поиск</Nav.Link>
+                            <Nav.Item>
+                                <Nav.Link href="/bloggers">Обратная связь</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link href="/monitoring">Мониторинг</Nav.Link>
+                            </Nav.Item>
+                        </div>
+                        <div className={styles.rightBlock}>
+                            <NavDropdown menuVariant="dark" title={dropDownTitle} id="basic-nav-dropdown">
+                                <NavDropdown.Item onClick={(e) => {setModalShow(true)}}>Настройки инстаграма</NavDropdown.Item>
+                            </NavDropdown>
+                        </div>
+                    </Nav>
+                </Container>
+            </Navbar>
+            <Login
+                show={modalShow}
+                onHide={(e) => setModalShow(false)}
+            />
+        </>
     );
 }
   
