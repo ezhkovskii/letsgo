@@ -52,5 +52,3 @@ class PressTourList(generics.ListCreateAPIView):
 class PressTourDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = PressTour.objects.all()
     serializer_class = PressTourSerializer
-
-    
