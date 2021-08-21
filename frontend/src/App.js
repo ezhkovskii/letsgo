@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -49,7 +49,7 @@ export default function App() {
                     <Header openPopupCallback={handleCallback} />
                     <div className="container mt-3">
                         <Switch>
-                            <Route path="/" component={PressTours}/>
+                            <Route exact path="/" component={PressTours}/>
                             <Route path="/bloggers/:id" component={Bloggers}/>
                             <Route path="/monitoring" component={Monitoring}/>
                             <Redirect to="/"/>
