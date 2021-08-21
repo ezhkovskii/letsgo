@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import PressToursList from '../components/List/PressToursList';
+import BlogersList from '../components/List/BlogersList';
 import axios from 'axios';
 
-const PressTours = () => {
+const Bloggers = () => {
     let [posts, setPosts] = useState([]);
 
     useEffect(async () => {
@@ -11,10 +11,8 @@ const PressTours = () => {
     }, []);
 
     return (
-        <div className="rounded">
-            <PressToursList data={posts}/>
-        </div>
+        <BlogersList data={posts}/>
     );
 }
 
-export default PressTours;
+export default Bloggers;

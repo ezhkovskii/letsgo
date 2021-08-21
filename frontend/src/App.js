@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Header from './components/Header';
 import Footer from './components/Footer';
-import BloggersList from './pages/BloggersList';
+import Bloggers from './pages/Bloggers';
 import Search from './pages/Search';
 import Monitoring from './pages/Monitoring';
 import PressTours from './pages/PressTours';
@@ -30,7 +30,7 @@ export default function App() {
             <Monitoring />
           </Route>
           <Route path="/bloggers">
-            <BloggersList />
+            <Bloggers />
           </Route>
         </Switch>
        </div>
