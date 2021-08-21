@@ -33,7 +33,7 @@ class PressTour(models.Model):
         return self.title
 
     def save(self):
-        # поиск текущего пресстура, current ставим у него false, т.к. текущий только один
+        PressTour.objects.filter(current=True).update(current=False)
         return super().save()
 
 
