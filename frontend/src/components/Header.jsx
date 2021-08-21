@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const dropDownTitle = (
@@ -20,16 +21,10 @@ const Header = () => {
             <Navbar bg="primary" variant="dark">
                 <Container>
                     <Nav activeKey="/home">
-                        <div className="d-flex">
-                            <Nav.Link href="/">Пресс-туры</Nav.Link>
-                            <Nav.Link href="/search">Поиск</Nav.Link>
-                            <Nav.Item>
-                                <Nav.Link href="/bloggers">Обратная связь</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link href="/monitoring">Мониторинг</Nav.Link>
-                            </Nav.Item>
-                        </div>
+                        <Nav.Link as={Link} to="/">Пресс-туры</Nav.Link>
+                        <Nav.Link as={Link} to="/search">Поиск</Nav.Link>
+                        <Nav.Link as={Link} to="/bloggers">Обратная связь</Nav.Link>
+                        <Nav.Link as={Link} to="/monitoring">Мониторинг</Nav.Link>
                         <div className={styles.rightBlock}>
                             <NavDropdown menuVariant="dark" title={dropDownTitle} id="basic-nav-dropdown">
                                 <NavDropdown.Item onClick={(e) => {setModalShow(true)}}>Настройки инстаграма</NavDropdown.Item>

@@ -10,3 +10,6 @@ class AccountInstaSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return AccountInsta.objects.create(**validated_data)
+
+class PressTourSerializer(serializers.Serializer):
+    pass
