@@ -2,12 +2,17 @@
   display: flex;
 }
 
+.ws-justify-content-between {
+  justify-content: space-between;
+}
+
 .main {
   background-color: #f4f7fb;
 }
 
 .main__block {
   min-height: 100%;
+  padding: 25px;
 }
 
 :root {

@@ -26,6 +26,9 @@ export default function App() {
           <Route path="/search">
             <Search />
           </Route>
+           <Route path="/bloggers">
+               <Bloggers />
+           </Route>
           <Route path="/monitoring">
             <Monitoring />
           </Route>
