@@ -23,7 +23,7 @@ const PressToursList = ({data, onDelete}) => {
                                 <div class="row">
                                     <div class="text-black-50">Дата создания: {item.created}</div>
                                     <div class="text-black-50">Кол-во блогеров: {item.number_bloggers}</div>
-                                    <div class="text-black-50">Статус: {item.status ? status[item.status + 1] : ''}</div>
+                                    <div class="text-black-50">Статус: {item.status ? status[item.status - 1] : ''}</div>
                                 </div>
                             </div>
                             <div class="col-2">
