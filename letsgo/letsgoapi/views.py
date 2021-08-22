@@ -48,7 +48,7 @@ class AuthInst(APIView):
 
 
 class PressTourList(generics.ListCreateAPIView):
-    queryset = PressTour.objects.all()
+    queryset = PressTour.objects.all().order_by('current', '-created')
     serializer_class = PressTourSerializer
 
 
@@ -82,8 +82,19 @@ def get_list_bloggers_from_instagram(request):
             posts_by_hashtag = json.loads(req.text)
             for post in posts_by_hashtag:
                 bloggers.append(post['user'])
+
+    bloggers_sort_desc = []
+    for blogger in bloggers:
+        req = requests.post(URL_INSTAGRAM_REST + 'user/info', data={
+            'sessionid': SESSION_ID,
+            'user_id': blogger['pk'],
+            'use_cache': False
+        })
+        if req.status_code == 200:
+            bloggers_sort_desc.append(json.loads(req.text))
+            bloggers_sort_desc = sorted(bloggers_sort_desc, reverse=True, key = lambda x: x['follower_count'])
     
-    return Response(bloggers)
+    return Response(bloggers_sort_desc)
 
 
 @api_view(['GET'])
