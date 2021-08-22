@@ -46,12 +46,12 @@ const PressToursList = (props) => {
                         placeholder="Введите кол-во блогеров"/>
                 </div>
                 <div class="form-group">
-                <label for="inputState">Статус</label>
-                    <select id="inputState" class="form-control"onChange={(e)=>setStatus(e.target.value)}>
-                        <option selected value="1">Набор блогеров</option>
-                        <option value="2">Проведение</option>
-                        <option value="3">Завершен</option>
-                        </select>
+                {/*<label for="inputState">Статус</label>*/}
+                {/*    <select id="inputState" class="form-control"onChange={(e)=>setStatus(e.target.value)}>*/}
+                {/*        <option selected value="1">Набор блогеров</option>*/}
+                {/*        <option value="2">Проведение</option>*/}
+                {/*        <option value="3">Завершен</option>*/}
+                {/*        </select>*/}
                     </div>
               <Modal.Footer>
                 <Button variant="secondary" onClick={props.onHide}>
