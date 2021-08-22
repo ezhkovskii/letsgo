@@ -29,7 +29,14 @@ class AuthInst(APIView):
         serializer = AccountInstaSerializer(data=request.data)
         if serializer.is_valid():
             username = serializer.validated_data.get('username')
-            if AccountInsta.objects.filter(username=username).exists():
+            acc = AccountInsta.objects.filter(username=username)
+            if acc.exists():
+                req = requests.post(URL_INSTAGRAM_REST + 'auth/relogin', data={
+                    'sessionid': acc.first().session_id
+                })
+                if req.status_code == 200:
+                    acc.session_id = req.text
+                    acc.save()
                 return Response(self.response, status=status.HTTP_200_OK)
 
             req = requests.post(URL_INSTAGRAM_REST + 'auth/login', data=serializer.validated_data)
