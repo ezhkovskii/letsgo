@@ -18,6 +18,9 @@ const Bloggers = (props) => {
             setIsLoading(true);
             try {
                 const resultPosts = await axios.get(`${SERVER_HOST}api/v1/get-bloggers-from-instagram-by-params/?key_words=${keyWords}`)
+                if (!resultPosts.data?.length) {
+                    setError('Блогеры не найдены')
+                }
                 setPosts(resultPosts.data);
             } catch (e) {
                 setError('Произошла ошибка... Повторите попытку позже')
