@@ -69,7 +69,7 @@ def get_list_bloggers_from_instagram(request):
     number_publications = request.query_params.get('number_publications') 
     number_subscribers = request.query_params.get('number_subscribers') 
     number_subscriptions = request.query_params.get('number_subscriptions')
-
+    
     key_words_list = [key.strip().lower() for key in key_words.split(',')]
     for key_word in key_words_list:
         data = {
